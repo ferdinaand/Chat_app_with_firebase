@@ -1,0 +1,4 @@
+#Fri Oct 07 11:21:16 WAT 2022
+base.0=C\:\\Users\\User\\Desktop\\ecommerce\\string_chat\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
