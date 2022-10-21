@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:string_chat/splash_screen.dart';
+import 'package:string_chat/views/forgot_password.dart';
 import 'package:string_chat/views/home_screen.dart';
 import 'package:string_chat/views/sign_in.dart';
 import 'package:string_chat/views/sign_up.dart';
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: const signIn(),
+      home: splashScreen\(),
     );
   }
 }

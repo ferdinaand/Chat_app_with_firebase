@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,28 +14,41 @@ class signUp extends StatefulWidget {
 }
 
 class _signUpState extends State<signUp> {
-  TextEditingController usernameTextEditingController = TextEditingController();
-  TextEditingController passwordTextEditingController = TextEditingController();
-
-  Future signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: usernameTextEditingController.text.trim(),
-        password: passwordTextEditingController.text.trim());
-  }
+  final TextEditingController emailTextEditingController =
+      TextEditingController();
+  final TextEditingController passwordTextEditingController =
+      TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   void dispose() {
-    usernameTextEditingController.dispose();
+    emailTextEditingController.dispose();
     // ignore: todo
-    passwordTextEditingController.dispose(); // TODO: implement dispose
+    passwordTextEditingController.dispose();
+
     super.dispose();
+  }
+
+  Future signUp() async {
+    if (passwordConfirmed()) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailTextEditingController.text.trim(),
+          password: passwordTextEditingController.text.trim());
+    }
+  }
+
+  bool passwordConfirmed() {
+    if (passwordTextEditingController == confirmPasswordController) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(50), child: appbarMain(context)),
       body: SingleChildScrollView(
         child: Stack(children: [
           Container(
@@ -54,10 +65,12 @@ class _signUpState extends State<signUp> {
                     padding: const EdgeInsets.all(50.0),
                     child: Image.asset(
                       'assets/images/group.png',
+                      height: 130,
+                      width: 130,
                     ),
                   ),
                   TextFormField(
-                    controller: usernameTextEditingController,
+                    controller: emailTextEditingController,
                     decoration: InputDecoration(
                         filled: true,
                         fillColor: Color.fromARGB(255, 227, 241, 253),
@@ -103,9 +116,35 @@ class _signUpState extends State<signUp> {
                       ),
                     ),
                   ),
+
                   SizedBox(
-                    height: 45,
+                    height: 10,
                   ),
+                  TextFormField(
+                    controller: confirmPasswordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 227, 241, 253),
+                      labelText: "Confirm password",
+                      labelStyle: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 227, 241, 253)),
+                          borderRadius: BorderRadius.circular(10)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.key,
+                        color: Color.fromARGB(255, 5, 170, 246),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 14),
+
                   //Elevated buttons
                   ElevatedButton(
                     onPressed: signUp,
@@ -115,7 +154,7 @@ class _signUpState extends State<signUp> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     child: Text(
-                      "Sign In",
+                      "Sign Up",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -123,7 +162,7 @@ class _signUpState extends State<signUp> {
                     ),
                   ),
                   SizedBox(
-                    height: 45,
+                    height: 15,
                   ),
 
                   Row(
@@ -147,7 +186,7 @@ class _signUpState extends State<signUp> {
                           }));
                         },
                         child: Text(
-                          'sign In',
+                          'sign in',
                           style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.bold,

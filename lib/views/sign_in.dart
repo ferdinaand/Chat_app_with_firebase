@@ -9,6 +9,7 @@ import 'package:string_chat/views/chat_screens.dart';
 import 'package:string_chat/views/sign_up.dart';
 import 'package:string_chat/widgets/widget.dart';
 import 'package:string_chat/services/Auth.dart';
+import 'package:string_chat/views/forgot_password.dart';
 
 class signIn extends StatefulWidget {
   const signIn({Key? key}) : super(key: key);
@@ -18,20 +19,23 @@ class signIn extends StatefulWidget {
 }
 
 class _signInState extends State<signIn> {
-  TextEditingController usernameTextEditingController = TextEditingController();
-  TextEditingController passwordTextEditingController = TextEditingController();
+  final TextEditingController emailTextEditingController =
+      TextEditingController();
+  final TextEditingController passwordTextEditingController =
+      TextEditingController();
 
   Future signin() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: usernameTextEditingController.text.trim(),
+        email: emailTextEditingController.text.trim(),
         password: passwordTextEditingController.text.trim());
   }
 
   @override
   void dispose() {
-    usernameTextEditingController.dispose();
+    emailTextEditingController.dispose();
     // ignore: todo
-    passwordTextEditingController.dispose(); // TODO: implement dispose
+    passwordTextEditingController.dispose();
+
     super.dispose();
   }
 
@@ -57,7 +61,7 @@ class _signInState extends State<signIn> {
                     ),
                   ),
                   TextFormField(
-                    controller: usernameTextEditingController,
+                    controller: emailTextEditingController,
                     decoration: InputDecoration(
                         filled: true,
                         fillColor: Color.fromARGB(255, 227, 241, 253),
@@ -103,8 +107,34 @@ class _signInState extends State<signIn> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return forgotPassword();
+                              }));
+                            })
+                      ],
+                    ),
+                  ),
                   SizedBox(
-                    height: 45,
+                    height: 10,
                   ),
                   //Elevated buttons
                   ElevatedButton(
@@ -123,7 +153,7 @@ class _signInState extends State<signIn> {
                     ),
                   ),
                   SizedBox(
-                    height: 45,
+                    height: 10,
                   ),
 
                   Row(

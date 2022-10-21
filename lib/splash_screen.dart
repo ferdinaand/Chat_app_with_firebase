@@ -18,11 +18,10 @@ class _splashScreenState extends State<splashScreen> {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return HomeScreen();
+          return const HomeScreen();
         } else {
-          return signIn();
+          return const signIn();
         }
-        ;
       },
     ));
   }

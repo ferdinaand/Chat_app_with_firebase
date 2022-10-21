@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:string_chat/views/chat_screens.dart';
 import 'package:string_chat/services/Auth.dart';
-import '';
+import 'package:string_chat/views/sign_up.dart';
+import 'package:string_chat/views/sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,6 +17,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final user = FirebaseAuth.instance.currentUser!;
+
+  Future signout() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
@@ -40,7 +46,18 @@ class _HomeScreenState extends State<HomeScreen> {
       extendBody: true,
       backgroundColor: Colors.white,
       body: Container(
-        child: Center(child: Text('signed in as')),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Center(child: Text('signed in as')),
+            ElevatedButton(
+                onPressed: signout,
+                child: const Text(
+                  'signout',
+                  textAlign: TextAlign.center,
+                ))
+          ],
+        ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
         height: 55,

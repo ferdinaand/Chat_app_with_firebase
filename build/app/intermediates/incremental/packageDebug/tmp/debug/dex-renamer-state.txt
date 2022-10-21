@@ -1,4 +1,16 @@
-#Fri Oct 07 11:21:16 WAT 2022
-base.0=C\:\\Users\\User\\Desktop\\ecommerce\\string_chat\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
+#Wed Oct 19 22:34:23 WAT 2022
+path.4=classes2.dex
+path.3=1/classes.dex
+path.2=0/classes.dex
+path.1=0/classes.dex
 path.0=classes.dex
+base.4=C\:\\Users\\User\\Desktop\\string_chat\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.3=C\:\\Users\\User\\Desktop\\string_chat\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.2=C\:\\Users\\User\\Desktop\\string_chat\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.1=C\:\\Users\\User\\Desktop\\string_chat\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.0=C\:\\Users\\User\\Desktop\\string_chat\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+renamed.4=classes5.dex
