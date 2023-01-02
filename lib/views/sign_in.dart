@@ -141,7 +141,7 @@ class _signInState extends State<signIn> {
                     onPressed: signin,
                     style: ElevatedButton.styleFrom(
                         fixedSize: Size(350, 55),
-                        primary: Color.fromARGB(255, 35, 150, 238),
+                        backgroundColor: Color.fromARGB(255, 35, 150, 238),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     child: Text(
