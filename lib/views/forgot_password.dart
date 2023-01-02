@@ -111,7 +111,7 @@ class _forgotPasswordState extends State<forgotPassword> {
               ElevatedButton(
                 onPressed: passwordReset,
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 child: Text('Reset Password'),
