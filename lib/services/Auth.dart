@@ -15,3 +15,4 @@ import 'package:string_chat/views/sign_up.dart';
       
 //       ;
 // }
+firebase
